@@ -1,14 +1,4 @@
-import React from 'react';
-import {View,Text} from 'react-native';
-import {test} from "@/utils";
+// import Navigator from "@/navigator";
+import Navigator from "@/navigator/BottomTabs";
 
-export default class App extends React.Component{
-  render() {
-    const a=test()
-    return (
-      <View>
-        <Text>App{a}</Text>
-      </View>
-    );
-  }
-}
+export default Navigator;
