@@ -1,4 +1,3 @@
-// import Navigator from "@/navigator";
-import Navigator from "@/navigator/BottomTabs";
+import Navigator from "@/navigator";
 
 export default Navigator;

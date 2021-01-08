@@ -7,11 +7,7 @@ export default class Account extends React.Component{
     return (
       <View>
         <Text>
-          Detail
-          <Button
-            title="跳 转"
-            onPress={() => navigation.navigate('Home')}
-          />
+          Account
         </Text>
       </View>
     );

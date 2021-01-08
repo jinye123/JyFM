@@ -7,11 +7,7 @@ export default class Listen extends React.Component{
     return (
       <View>
         <Text>
-          Home
-          <Button
-            title="去详情页"
-            onPress={() => navigation.navigate('Detail')}
-          />
+          Listen
         </Text>
       </View>
     );

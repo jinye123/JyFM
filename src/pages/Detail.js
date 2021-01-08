@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Button } from "react-native";
+import { View, Text } from "react-native";
 
 export default class Detail extends React.Component{
   render() {
@@ -8,10 +8,6 @@ export default class Detail extends React.Component{
       <View>
         <Text>
           Detail
-          <Button
-            title="跳 转"
-            onPress={() => navigation.navigate('Home')}
-          />
         </Text>
       </View>
     );
