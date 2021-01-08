@@ -1,19 +1,55 @@
-import React from 'react'
-import {View,Text,Button} from 'react-native'
+import React from "react";
+import { View, Text, Button } from "react-native";
+import { connect } from "react-redux";
 
-export default class Home extends React.Component{
+const mapStateToProps = ({ home, loading }) => ({
+  num: home.num,
+  loading: loading.effects["home/asyncAdd"],
+});
+
+class Home extends React.Component {
+  addHandle = () => {
+    const { dispatch } = this.props;
+    dispatch({
+      type: "home/add",
+      payload: {
+        num: 10,
+      },
+    });
+  };
+  addHandle2 = () => {
+    const { dispatch } = this.props;
+    dispatch({
+      type: "home/asyncAdd",
+      payload: {
+        num: 10,
+      },
+    });
+  };
+
   render() {
-    const {navigation} = this.props
+    const { navigation, loading } = this.props;
     return (
       <View>
         <Text>
-          Home
-          <Button
-            title="去详情页"
-            onPress={() => navigation.navigate('Detail')}
-          />
+          Home{this.props.num}
         </Text>
+        <Button
+          title="去详情页"
+          onPress={() => navigation.navigate("Detail")}
+        />
+        <Button
+          title="加"
+          onPress={this.addHandle}
+        />
+        <Button
+          title="异步加"
+          onPress={this.addHandle2}
+        />
+        <Text>{loading ? "正在努力计算中" : ""}</Text>
       </View>
     );
   }
 }
+
+export default connect(mapStateToProps)(Home);

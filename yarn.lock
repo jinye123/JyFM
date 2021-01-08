@@ -2452,6 +2452,13 @@ dva-core@^2.0.4:
     redux-saga "^0.16.0"
     warning "^3.0.0"
 
+dva-loading@^3.0.22:
+  version "3.0.22"
+  resolved "https://registry.npm.taobao.org/dva-loading/download/dva-loading-3.0.22.tgz#c0dd2fb081492752b992d9ce2701b88825186e02"
+  integrity sha1-wN0vsIFJJ1K5ktnOJwG4iCUYbgI=
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 ecc-jsbn@~0.1.1:
   version "0.1.2"
   resolved "https://registry.npm.taobao.org/ecc-jsbn/download/ecc-jsbn-0.1.2.tgz#3a83a904e54353287874c564b7549386849a98c9"
