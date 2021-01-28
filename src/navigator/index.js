@@ -1,16 +1,15 @@
 import React from "react";
 import { getFocusedRouteNameFromRoute, NavigationContainer } from "@react-navigation/native";
 import { CardStyleInterpolators, createStackNavigator, HeaderStyleInterpolators } from "@react-navigation/stack";
-import Home from "@/pages/Home";
 import Detail from "@/pages/Detail";
 import BottomTabs from "@/navigator/BottomTabs";
 
 const Stack = createStackNavigator();
 
 function getHeaderTitle(route) {
-  const routeName = getFocusedRouteNameFromRoute(route) ?? "Home";
+  const routeName = getFocusedRouteNameFromRoute(route) ?? "HomeTabs";
   switch (routeName) {
-    case "Home":
+    case "HomeTabs":
       return "首页";
     case "Listen":
       return "我听";
@@ -34,6 +33,8 @@ export default class Navigator extends React.Component {
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
             gestureEnabled: true,
             gestureDirection: "horizontal",
+            // headerStatusBarHeight: statusbar.currentHeight,
+            headerStyle: {},
           }}
         >
           <Stack.Screen
