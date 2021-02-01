@@ -6,7 +6,6 @@ import store from "./config/dva";
 
 export default class extends React.Component {
   render() {
-    console.log(StatusBar.currentHeight);
     return (
       <Provider store={store}>
         <Navigator />
