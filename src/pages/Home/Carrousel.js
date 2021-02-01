@@ -11,13 +11,6 @@ export default class SnapCarousel extends React.Component {
     super(props);
     this.state = {
       activeSlide: 0,
-      entries: [
-        "https://s.ssjygw.com/zx/20210106/a96e67b572011a2574be67b45159b55.png",
-        "https://s.ssjygw.com/zx/20210105/dc906be851a9e5b5cc43dcd6ec37d68.jpg",
-        "https://s.ssjygw.com/zx/20210106/a96e67b572011a2574be67b45159b55.png",
-        "https://s.ssjygw.com/zx/20210105/dc906be851a9e5b5cc43dcd6ec37d68.jpg",
-        "https://s.ssjygw.com/zx/20210105/dc906be851a9e5b5cc43dcd6ec37d68.jpg",
-      ],
     };
   }
 
@@ -25,7 +18,7 @@ export default class SnapCarousel extends React.Component {
     return <ParallaxImage
       style={styles.image}
       containerStyle={styles.imageContainer}
-      source={{ uri: item }}
+      source={{ uri: item['purl'] }}
       parallaxFactor={0.8}
       showSpinner
       spinnerColor="rgba(0,0,0,0.25)"
@@ -34,12 +27,13 @@ export default class SnapCarousel extends React.Component {
   };
 
   get pagination() {
-    const { entries, activeSlide } = this.state;
+    const { activeSlide } = this.state;
+    const { bannerList } = this.props;
     return (
       <View style={styles.paginationWrapper}>
         <Pagination
           activeDotIndex={activeSlide}
-          dotsLength={entries.length}
+          dotsLength={bannerList.length}
           containerStyle={styles.paginationContainer}
           dotContainerStyle={styles.dotContainerStyle}
           dotStyle={styles.dotStyle}
@@ -51,10 +45,11 @@ export default class SnapCarousel extends React.Component {
   }
 
   render() {
+    const {bannerList} = this.props
     return (
       <View style={{position: 'relative'}}>
         <Carousel
-          data={this.state.entries}
+          data={bannerList}
           renderItem={this._renderItem}
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}

@@ -1,32 +1,28 @@
-const initState = {
-  num: 0,
-};
+import { getHomeList } from "../api";
 
-function delay() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, 3000);
-  });
-}
+const initState = {
+  banners: [],
+};
 
 export default {
   namespace: "home",
   state: initState,
   reducers: {
-    add(state = initState, { type, payload }) {
+    setState(state = initState, { type, payload }) {
       return {
         ...state,
-        num: state.num + payload.num,
+        ...payload,
       };
     },
   },
   effects: {
-    * asyncAdd({ payload }, { call, put }) {
-      yield call(delay);
+    * getHomeData(_, { call, put }) {
+      const { bannersList } = yield call(getHomeList);
       yield put({
-        type: "add",
-        payload,
+        type: "setState",
+        payload: {
+          banners: bannersList
+        },
       });
     },
   },

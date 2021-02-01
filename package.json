@@ -16,6 +16,7 @@
     "@react-navigation/material-top-tabs": "^5.3.13",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
+    "axios": "^0.21.1",
     "babel-plugin-module-resolver": "^4.1.0",
     "dva-core": "^2.0.4",
     "dva-loading": "^3.0.22",
