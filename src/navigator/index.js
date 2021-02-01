@@ -38,7 +38,7 @@ export default class Navigator extends React.Component {
           }}
         >
           <Stack.Screen
-            name="Home"
+            name="Index"
             component={BottomTabs}
             options={({ route }) => ({
               headerTitle: getHeaderTitle(route),

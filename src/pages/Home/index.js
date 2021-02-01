@@ -1,13 +1,14 @@
 import React from "react";
 import { View, Text, Button } from "react-native";
 import { connect } from "react-redux";
+import Carrousel from './Carrousel'
 
 const mapStateToProps = ({ home, loading }) => ({
   num: home.num,
   loading: loading.effects["home/asyncAdd"],
 });
 
-class Home extends React.Component {
+class Index extends React.Component {
   addHandle = () => {
     const { dispatch } = this.props;
     dispatch({
@@ -46,10 +47,11 @@ class Home extends React.Component {
           title="异步加"
           onPress={this.addHandle2}
         />
+        <Carrousel />
         <Text>{loading ? "正在努力计算中" : ""}</Text>
       </View>
     );
   }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Index);

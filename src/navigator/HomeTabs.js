@@ -1,6 +1,6 @@
 import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import Home from "../pages/Home";
+import Index from "../pages/Home/index";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -25,7 +25,7 @@ export default class HomeTabs extends React.Component {
           inactiveTintColor: "#333333",
         }}
       >
-        <Tab.Screen name="Home" component={Home} options={{
+        <Tab.Screen name="Index" component={Index} options={{
           tabBarLabel: "推荐",
         }} />
       </Tab.Navigator>
