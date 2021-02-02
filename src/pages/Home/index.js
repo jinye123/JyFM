@@ -1,11 +1,13 @@
 import React from "react";
-import { View, StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, Image, Text ,ScrollView} from "react-native";
 import { connect } from "react-redux";
 import Carrousel from "./Carrousel";
+import Guess from "./Guess";
 
 const mapStateToProps = ({ home, loading }) => ({
   bannersList: home.bannersList,
   trainingCamp: home.trainingCamp,
+  jhList: home.jhList,
   loading: loading.effects["home/getHomeData"],
 });
 
@@ -43,9 +45,9 @@ class Index extends React.Component {
   }
 
   render() {
-    const { bannersList, trainingCamp } = this.props;
+    const { bannersList, trainingCamp, jhList } = this.props;
     return (
-      <View>
+      <ScrollView>
         <Carrousel bannersList={bannersList} />
         <View style={styles.category}>
           {
@@ -71,7 +73,8 @@ class Index extends React.Component {
             </View>
           )
         }
-      </View>
+        <Guess jhList={jhList} />
+      </ScrollView>
     );
   }
 }
