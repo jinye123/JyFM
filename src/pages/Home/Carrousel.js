@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
   image: {
     ...StyleSheet.absoluteFillObject,
-    resizeMode: "cover",
+    resizeMode: "contain",
   },
   paginationWrapper: {
     justifyContent: "center",

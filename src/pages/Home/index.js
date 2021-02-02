@@ -1,13 +1,15 @@
 import React from "react";
-import { View, StyleSheet, Image, Text ,ScrollView} from "react-native";
+import { View, StyleSheet, Image, Text ,ScrollView , FlatList} from "react-native";
 import { connect } from "react-redux";
 import Carrousel from "./Carrousel";
 import Guess from "./Guess";
+import HomeList from "./HomeList";
 
 const mapStateToProps = ({ home, loading }) => ({
   bannersList: home.bannersList,
   trainingCamp: home.trainingCamp,
   jhList: home.jhList,
+  gkList: home.gkList,
   loading: loading.effects["home/getHomeData"],
 });
 
@@ -37,17 +39,10 @@ class Index extends React.Component {
     ],
   };
 
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch({
-      type: "home/getHomeData",
-    });
-  }
-
-  render() {
-    const { bannersList, trainingCamp, jhList } = this.props;
-    return (
-      <ScrollView>
+  get header(){
+    const { bannersList, trainingCamp, jhList , gkList} = this.props;
+    return(
+      <View>
         <Carrousel bannersList={bannersList} />
         <View style={styles.category}>
           {
@@ -74,7 +69,21 @@ class Index extends React.Component {
           )
         }
         <Guess jhList={jhList} />
-      </ScrollView>
+        <HomeList listObj={gkList} />
+      </View>
+    )
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch({
+      type: "home/getHomeData",
+    });
+  }
+
+  render() {
+    return (
+      <FlatList ListHeaderComponent={this.header} />
     );
   }
 }
