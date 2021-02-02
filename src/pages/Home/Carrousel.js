@@ -47,7 +47,7 @@ export default class SnapCarousel extends React.Component {
   render() {
     const {bannersList} = this.props
     return (
-      <View style={{position: 'relative'}}>
+      <View style={{position: 'relative',backgroundColor:"#ffffff"}}>
         <Carousel
           data={bannersList}
           renderItem={this._renderItem}

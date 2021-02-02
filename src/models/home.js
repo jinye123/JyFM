@@ -1,7 +1,10 @@
-import { getHomeList } from "../api";
+import { getHomeList, getActivityList } from "../api";
 
 const initState = {
   bannersList: [],
+  jhList: [],
+  gkList: [],
+  trainingCamp: null,
 };
 
 export default {
@@ -17,11 +20,15 @@ export default {
   },
   effects: {
     * getHomeData(_, { call, put }) {
-      const { bannersList } = yield call(getHomeList);
+      const { bannersList, typeVo } = yield call(getHomeList);
+      const [ trainingCamp, groupList ] = yield call(getActivityList);
       yield put({
         type: "setState",
         payload: {
-          bannersList: bannersList
+          bannersList: bannersList,
+          jhList: typeVo[0],
+          gkList: typeVo[1],
+          trainingCamp: trainingCamp,
         },
       });
     },
