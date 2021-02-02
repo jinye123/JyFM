@@ -9,7 +9,7 @@ const service = axios.create({
 })
 // 请求拦截
 service.interceptors.request.use(config => {
-    config.headers['token'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzc3p4LXNlcnZlciIsImF1ZCI6IjI5NDIiLCJ1bmlvbmlkIjoib3hScS13VGU2bGk1NFRYVk56YUhYbE5YR2Z3dyIsInJvbGUiOiIyNCIsIm9wZW5pZCI6Im84dURPNW01bjFzX19YZHNJcmRINXcxcmdJUkkiLCJpc3MiOiJzc2RqeiIsImV4cCI6MTYxMjE3OTQwOSwiaWF0IjoxNjEyMTY4NjA5fQ.ZUZ6SSI2JFhHuQD7jSiE3CaI9lZlPCuAY5igenbnwj8"
+    config.headers['token'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzc3p4LXNlcnZlciIsImF1ZCI6IjI5NDIiLCJ1bmlvbmlkIjoib3hScS13VGU2bGk1NFRYVk56YUhYbE5YR2Z3dyIsInJvbGUiOiIyNCIsIm9wZW5pZCI6Im84dURPNW01bjFzX19YZHNJcmRINXcxcmdJUkkiLCJpc3MiOiJzc2RqeiIsImV4cCI6MTYxMjI0NzYzOCwiaWF0IjoxNjEyMjM2ODM4fQ.FuLNraMMSxfRy1w-bvwbnb8vEAV2iuWHg_hfQbL0ea4"
     return config
   },
   error => {
@@ -26,9 +26,6 @@ service.interceptors.response.use(response => {
         return data
       } else if(code === -1){
         // Toast('您的登录已过期,请重新登录')
-        store.dispatch('user/fedLogOut').then(() => {
-          location.reload()
-        })
       }else {
         // Toast(message || 'Error')
         return Promise.reject(message || 'Error')

@@ -4,7 +4,7 @@ import { View, StyleSheet } from "react-native";
 import { hp, wp, viewportWidth } from "../../utils";
 
 const sliderWidth = viewportWidth;
-const itemHeight = hp(26);
+const itemHeight = hp(20);
 const itemWidth = wp(90) + wp(2) * 2;
 export default class SnapCarousel extends React.Component {
   constructor(props) {
@@ -28,12 +28,12 @@ export default class SnapCarousel extends React.Component {
 
   get pagination() {
     const { activeSlide } = this.state;
-    const { bannerList } = this.props;
+    const { bannersList } = this.props;
     return (
       <View style={styles.paginationWrapper}>
         <Pagination
           activeDotIndex={activeSlide}
-          dotsLength={bannerList.length}
+          dotsLength={bannersList.length}
           containerStyle={styles.paginationContainer}
           dotContainerStyle={styles.dotContainerStyle}
           dotStyle={styles.dotStyle}
@@ -45,11 +45,11 @@ export default class SnapCarousel extends React.Component {
   }
 
   render() {
-    const {bannerList} = this.props
+    const {bannersList} = this.props
     return (
       <View style={{position: 'relative'}}>
         <Carousel
-          data={bannerList}
+          data={bannersList}
           renderItem={this._renderItem}
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}

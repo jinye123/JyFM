@@ -1,7 +1,7 @@
 import { getHomeList } from "../api";
 
 const initState = {
-  banners: [],
+  bannersList: [],
 };
 
 export default {
@@ -21,7 +21,7 @@ export default {
       yield put({
         type: "setState",
         payload: {
-          banners: bannersList
+          bannersList: bannersList
         },
       });
     },

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Carrousel from "./Carrousel";
 
 const mapStateToProps = ({ home, loading }) => ({
-  banners: home.banners,
+  bannersList: home.bannersList,
   loading: loading.effects["home/getHomeData"],
 });
 
@@ -17,10 +17,11 @@ class Index extends React.Component {
   }
 
   render() {
-    const { banners } = this.props;
+    const { bannersList } = this.props;
+    console.log(bannersList);
     return (
       <View>
-        <Carrousel bannerList={banners} />
+        <Carrousel bannersList={bannersList} />
       </View>
     );
   }
