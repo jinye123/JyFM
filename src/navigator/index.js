@@ -40,9 +40,19 @@ export default class Navigator extends React.Component {
           <Stack.Screen
             name="Index"
             component={BottomTabs}
-            options={({ route }) => ({
-              headerTitle: getHeaderTitle(route),
-            })}
+            options={({ route }) => {
+              const routName= getHeaderTitle(route)
+              if(routName==='首页'){
+                return {
+                  headerTitle: '',
+                  headerTransparent:true
+                }
+              }else {
+                return {
+                  headerTitle: routName,
+                }
+              }
+            }}
           />
           <Stack.Screen
             name="Detail"
