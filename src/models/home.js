@@ -19,7 +19,7 @@ export default {
     },
   },
   effects: {
-    * getHomeData(_, { call, put }) {
+    * getHomeData({callback}, { call, put }) {
       const { bannersList, typeVo } = yield call(getHomeList);
       const [ trainingCamp, groupList ] = yield call(getActivityList);
       yield put({
@@ -31,6 +31,8 @@ export default {
           trainingCamp: trainingCamp,
         },
       });
+      if(!callback) return
+      callback()
     },
   },
   subscription: "",

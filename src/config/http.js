@@ -9,7 +9,7 @@ const service = axios.create({
 })
 // 请求拦截
 service.interceptors.request.use(config => {
-    config.headers['token'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzc3p4LXNlcnZlciIsImF1ZCI6IjI5NDIiLCJ1bmlvbmlkIjoib3hScS13VGU2bGk1NFRYVk56YUhYbE5YR2Z3dyIsInJvbGUiOiIyNCIsIm9wZW5pZCI6Im84dURPNW01bjFzX19YZHNJcmRINXcxcmdJUkkiLCJpc3MiOiJzc2RqeiIsImV4cCI6MTYxMjI1NTM2MiwiaWF0IjoxNjEyMjQ0NTYyfQ.agJlV4u9rik9GIXkjp0G5KKmRNqOENJJHzLXPqIjp-w"
+    config.headers['token'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzc3p4LXNlcnZlciIsImF1ZCI6IjI5NDIiLCJ1bmlvbmlkIjoib3hScS13VGU2bGk1NFRYVk56YUhYbE5YR2Z3dyIsInJvbGUiOiIyNCIsIm9wZW5pZCI6Im84dURPNW01bjFzX19YZHNJcmRINXcxcmdJUkkiLCJpc3MiOiJzc2RqeiIsImV4cCI6MTYxMzgwNDQ5NiwiaWF0IjoxNjEzNzkzNjk2fQ.I2U6ojkg6mSNR91ZGIFcCMZZcz7zEYDbI2UeU4yiU-s"
     return config
   },
   error => {

@@ -5,9 +5,14 @@ import ListHeader from "../../components/ListHeader";
 
 export default class HomeList extends React.Component {
 
-  _renderItem = (list=[]) => list.map((item, index) => {
+  onPress = (item) => {
+    const {onPressItem} = this.props
+    onPressItem(item);
+  };
+
+  _renderItem = (list = []) => list.map((item, index) => {
     return (
-      <Touchable onPress={() => alert("点击")} style={styles.listItem} key={item.id}>
+      <Touchable onPress={() => this.onPress(item)} style={styles.listItem} key={item.id}>
         <Image style={styles.listImage} source={{ uri: item["purl"] }} />
         <View style={styles.rightBox}>
           <Text numberOfLines={2} style={styles.listTitle}>{item["title"]}</Text>
@@ -54,7 +59,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   rightBox: {
-    flex:1,
+    flex: 1,
     justifyContent: "space-between",
   },
   listTitle: {

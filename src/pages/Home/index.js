@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Image, Text ,ScrollView , FlatList} from "react-native";
+import { View, StyleSheet, Image, Text, ScrollView, FlatList } from "react-native";
 import { connect } from "react-redux";
 import Carrousel from "./Carrousel";
 import Guess from "./Guess";
@@ -37,11 +37,27 @@ class Index extends React.Component {
         source: require("./img/4.png"),
       },
     ],
+    refreshing: false,
   };
 
-  get header(){
-    const { bannersList, trainingCamp, jhList , gkList} = this.props;
-    return(
+  onPressItem = (item) => {
+    console.log(item);
+  };
+
+  onRefresh = () => {
+    const { dispatch } = this.props;
+    this.setState({ refreshing: true });
+    dispatch({
+      type: "home/getHomeData",
+      callback: () => {
+        this.setState({ refreshing: false });
+      },
+    });
+  };
+
+  get header() {
+    const { bannersList, trainingCamp, jhList, gkList } = this.props;
+    return (
       <View>
         <Carrousel bannersList={bannersList} />
         <View style={styles.category}>
@@ -68,10 +84,10 @@ class Index extends React.Component {
             </View>
           )
         }
-        <Guess jhList={jhList} />
-        <HomeList listObj={gkList} />
+        <Guess jhList={jhList} onPressItem={(item) => this.onPressItem(item)} />
+        <HomeList listObj={gkList} onPressItem={(item) => this.onPressItem(item)} />
       </View>
-    )
+    );
   }
 
   componentDidMount() {
@@ -82,8 +98,13 @@ class Index extends React.Component {
   }
 
   render() {
+    const { refreshing } = this.state;
     return (
-      <FlatList ListHeaderComponent={this.header} />
+      <FlatList
+        ListHeaderComponent={this.header}
+        onRefresh={this.onRefresh}
+        refreshing={refreshing}
+      />
     );
   }
 }

@@ -5,9 +5,14 @@ import ListHeader from '../../components/ListHeader'
 
 export default class SnapCarousel extends React.Component {
 
+  onPress = (item) => {
+    const {onPressItem} = this.props
+    onPressItem(item);
+  };
+
   _renderItem = ({ item }) => {
     return (
-      <Touchable onPress={() => alert("点击")} style={styles.guessItem}>
+      <Touchable onPress={() => this.onPress(item)} style={styles.guessItem}>
         <Image style={styles.guessImage} source={{ uri: item["purl"] }} />
         <Text numberOfLines={1} style={styles.guessTitle}>{item["title"]}</Text>
         <Text style={styles.guessSubTitle}>{item["count"]}人一起学习</Text>
