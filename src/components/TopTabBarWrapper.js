@@ -1,24 +1,30 @@
-import React from 'react';
+import React from "react";
 
-import { View ,Text ,StyleSheet} from "react-native";
-import {MaterialTopTabBar} from "@react-navigation/material-top-tabs";
-import {getStatusBarHeight} from 'react-native-iphone-x-helper';
+import { View, Text, StyleSheet } from "react-native";
+import { MaterialTopTabBar } from "@react-navigation/material-top-tabs";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import Touchable from "./Touchable";
 
-export default class TopTabBarWrapper extends React.Component{
+export default class TopTabBarWrapper extends React.Component {
+  goCategory = () => {
+    console.log(1111111);
+    const { navigation } = this.props;
+    navigation.navigate("Category");
+  };
+
   render() {
-    const {props} = this
+    const { props } = this;
     return (
       <View style={styles.container}>
         <View style={styles.topTabBarView}>
           <MaterialTopTabBar {...props} style={styles.tabBar} />
-          <Touchable style={styles.categoryBtn} onPress={()=>alert('点击分类')}>
+          <Touchable style={styles.categoryBtn} onPress={this.goCategory}>
             <Text>分类</Text>
           </Touchable>
         </View>
         <View style={styles.bottomBox}>
           <Touchable style={styles.searchBox}>
-            <Text style={{color:'#666'}}>搜索课程</Text>
+            <Text style={{ color: "#666" }}>搜索课程</Text>
           </Touchable>
           <Touchable style={styles.historyBox}>
             <Text>历史记录</Text>
@@ -31,40 +37,40 @@ export default class TopTabBarWrapper extends React.Component{
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop:getStatusBarHeight(),
-    backgroundColor:'#fff',
+    paddingTop: getStatusBarHeight(),
+    backgroundColor: "#fff",
   },
-  topTabBarView:{
-    flexDirection:'row',
-    alignItems:'center',
+  topTabBarView: {
+    flexDirection: "row",
+    alignItems: "center",
   },
-  tabBar:{
-    flex:1,
-    elevation:0,
-    backgroundColor:'transparent',
-    overflow:'hidden',
+  tabBar: {
+    flex: 1,
+    elevation: 0,
+    backgroundColor: "transparent",
+    overflow: "hidden",
   },
-  categoryBtn:{
-    paddingHorizontal:10,
-    borderLeftWidth:StyleSheet.hairlineWidth,
-    borderLeftColor:'#ccc'
-  },
-  bottomBox:{
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical:10,
-    paddingHorizontal:10
-  },
-  searchBox:{
-    flex:1,
-    height:33,
+  categoryBtn: {
     paddingHorizontal: 10,
-    backgroundColor:'#f7f8fa',
-    borderRadius:15,
-    justifyContent:'center',
+    borderLeftWidth: StyleSheet.hairlineWidth,
+    borderLeftColor: "#ccc",
   },
-  historyBox:{
-    paddingHorizontal:10
-  }
+  bottomBox: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+  },
+  searchBox: {
+    flex: 1,
+    height: 33,
+    paddingHorizontal: 10,
+    backgroundColor: "#f7f8fa",
+    borderRadius: 15,
+    justifyContent: "center",
+  },
+  historyBox: {
+    paddingHorizontal: 10,
+  },
 });
 

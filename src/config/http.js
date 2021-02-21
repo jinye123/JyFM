@@ -9,7 +9,7 @@ const service = axios.create({
 })
 // 请求拦截
 service.interceptors.request.use(config => {
-    config.headers['token'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzc3p4LXNlcnZlciIsImF1ZCI6IjI5NDIiLCJ1bmlvbmlkIjoib3hScS13VGU2bGk1NFRYVk56YUhYbE5YR2Z3dyIsInJvbGUiOiIyNCIsIm9wZW5pZCI6Im84dURPNW01bjFzX19YZHNJcmRINXcxcmdJUkkiLCJpc3MiOiJzc2RqeiIsImV4cCI6MTYxMzg4NDY3OSwiaWF0IjoxNjEzODczODc5fQ.tNk2n4niP2FtY1tV79ddiLB_O_3wZCWWU4PR7B-Fnwc"
+    config.headers['token'] =     config.headers["token"] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzc3p4LXNlcnZlciIsImF1ZCI6IjI5NDIiLCJ1bmlvbmlkIjoib3hScS13VGU2bGk1NFRYVk56YUhYbE5YR2Z3dyIsInJvbGUiOiIyNCIsIm9wZW5pZCI6Im84dURPNW01bjFzX19YZHNJcmRINXcxcmdJUkkiLCJpc3MiOiJzc2RqeiIsImV4cCI6MTYxMzg5OTkzNCwiaWF0IjoxNjEzODg5MTM0fQ.5C_2oCYQmda_rjSYH8ncVO2usdc-pyrz7DSBebgE6Js";
     return config
   },
   error => {
@@ -19,10 +19,9 @@ service.interceptors.request.use(config => {
 
 // 响应拦截
 service.interceptors.response.use(response => {
-
     if (response.status >= 200 && response.status < 300) {
-      const {code, data, message,netCode} = response.data
-      if (code === 1||netCode==='00000'||netCode==='T1003') {
+      const {code, data, message,netCode,status} = response.data
+      if (code === 1||netCode==='00000'||netCode==='T1003'||status ===100) {
         return data
       } else if(code === -1){
         // Toast('您的登录已过期,请重新登录')

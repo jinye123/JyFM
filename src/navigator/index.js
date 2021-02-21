@@ -1,8 +1,9 @@
 import React from "react";
 import { getFocusedRouteNameFromRoute, NavigationContainer } from "@react-navigation/native";
 import { CardStyleInterpolators, createStackNavigator, HeaderStyleInterpolators } from "@react-navigation/stack";
-import Detail from "@/pages/Detail";
-import BottomTabs from "@/navigator/BottomTabs";
+import Detail from "../pages/Detail";
+import Category from "../pages/Category";
+import BottomTabs from "../navigator/BottomTabs";
 
 const Stack = createStackNavigator();
 
@@ -41,17 +42,24 @@ export default class Navigator extends React.Component {
             name="Index"
             component={BottomTabs}
             options={({ route }) => {
-              const routName= getHeaderTitle(route)
-              if(routName==='首页'){
+              const routName = getHeaderTitle(route);
+              if (routName === "首页") {
                 return {
-                  headerTitle: '',
-                  headerTransparent:true
-                }
-              }else {
+                  headerTitle: "",
+                  headerTransparent: true,
+                };
+              } else {
                 return {
                   headerTitle: routName,
-                }
+                };
               }
+            }}
+          />
+          <Stack.Screen
+            name="Category"
+            component={Category}
+            options={{
+              headerTitle: "分类",
             }}
           />
           <Stack.Screen
