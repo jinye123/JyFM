@@ -32,7 +32,7 @@ export default class TopTabBarWrapper extends React.Component{
 const styles = StyleSheet.create({
   container: {
     paddingTop:getStatusBarHeight(),
-    backgroundColor:'#ffffff',
+    backgroundColor:'#fff',
   },
   topTabBarView:{
     flexDirection:'row',
@@ -41,6 +41,8 @@ const styles = StyleSheet.create({
   tabBar:{
     flex:1,
     elevation:0,
+    backgroundColor:'transparent',
+    overflow:'hidden',
   },
   categoryBtn:{
     paddingHorizontal:10,
