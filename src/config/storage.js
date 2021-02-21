@@ -11,5 +11,5 @@ const storage = new Storage({
 const load = (params) => {
   return storage.load(params);
 };
-
-export default { load, storage };
+export { load };
+export default storage;
