@@ -13,6 +13,7 @@ const initState = {
     },
   ],
   categories: [],
+  isEdit: false,
 };
 
 export default {
@@ -48,14 +49,30 @@ export default {
         });
       }
     },
+    * toggle({ payload }, { put, select }) {
+      const category = yield select(({ category }) => category);
+      yield put({
+        type: "setState",
+        payload: {
+          isEdit: !category.isEdit,
+          myCategories:payload.myCategories,
+        },
+      });
+      if(category.isEdit){
+        storage.save({
+          key:'myCategories',
+          data:payload.myCategories
+        })
+      }
+    },
   },
   subscriptions: {
     setup({ dispatch }) {
       dispatch({ type: "loadDate" });
     },
     asyncStorage() {
-      storage.sync.categories =  async () => {
-        const data=await getCategoryList()
+      storage.sync.categories = async () => {
+        const data = await getCategoryList();
         return data;
       };
       storage.sync.myCategories = () => {

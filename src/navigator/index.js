@@ -34,7 +34,13 @@ export default class Navigator extends React.Component {
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
             gestureEnabled: true,
             gestureDirection: "horizontal",
-            // headerStatusBarHeight: statusbar.currentHeight,
+            ...Platform.select({
+              android:{
+                headerStatusBarHeight: Statusbar.currentHeight,
+              }
+            }),
+            headerBackTitle:'返回',
+            headerTintColor:'#333',
             headerStyle: {},
           }}
         >
