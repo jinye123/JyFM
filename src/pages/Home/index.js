@@ -42,6 +42,8 @@ class Index extends React.Component {
 
   onPressItem = (item) => {
     console.log(item);
+    const {navigation} = this.props;
+    navigation.navigate('Album',{item})
   };
 
   onRefresh = () => {
