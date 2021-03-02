@@ -1,6 +1,6 @@
 import React from "react";
 import { HeaderHeightContext } from "@react-navigation/stack";
-import { View, Text, Image ,StyleSheet} from "react-native";
+import { View, Text, Image ,StyleSheet,Animated} from "react-native";
 import { connect } from "react-redux";
 import { BlurView } from "@react-native-community/blur";
 import Tab from './Tab';
@@ -14,6 +14,8 @@ const mapStateToProps = ({ album }) => {
 };
 
 class Album extends React.Component {
+
+  translateY= new Animated.Value(0)
   componentDidMount() {
     const { dispatch, route } = this.props;
     const { id } = route.params.item;
@@ -23,6 +25,10 @@ class Album extends React.Component {
         id,
       },
     });
+    Animated.timing(this.translateY,{
+      toValue:-280,
+      duration:3000
+    }).start()
   }
 
   renderHeader=()=>{
@@ -43,7 +49,15 @@ class Album extends React.Component {
   render() {
     const { count,title,subTitle} = this.props;
     return (
-      <View style={{flex:1}}>
+      <Animated.View style={[{
+        opacity:this.translateY.interpolate({
+          inputRange:[-280,0],
+          outputRange:[1,0]
+        }),
+        backgroundColor:this.translateY.interpolate({
+          inputRange:[-280,0],
+          outputRange:['red','#fff']
+        }),transform:[{translateY:this.translateY}]},{flex:1,padding:10}]}>
         {this.renderHeader()}
         <View style={styles.desc}>
           <View style={styles.descTop}>
@@ -56,7 +70,7 @@ class Album extends React.Component {
           </View>
         </View>
         <Tab />
-      </View>
+      </Animated.View>
     );
   }
 }

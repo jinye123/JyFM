@@ -9,7 +9,7 @@ const service = axios.create({
 })
 // 请求拦截
 service.interceptors.request.use(config => {
-    config.headers['token'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzc3p4LXNlcnZlciIsImF1ZCI6IjI5NDIiLCJ1bmlvbmlkIjoib3hScS13VGU2bGk1NFRYVk56YUhYbE5YR2Z3dyIsInJvbGUiOiIyNCIsIm9wZW5pZCI6Im84dURPNW01bjFzX19YZHNJcmRINXcxcmdJUkkiLCJpc3MiOiJzc2RqeiIsImV4cCI6MTYxNDE2NjI4MywiaWF0IjoxNjE0MTU1NDgzfQ.O1o_JkiopECTtU6a1qEyRAtea-koZKYH8mMA0evRiPg";
+    config.headers['token'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzc3p4LXNlcnZlciIsImF1ZCI6IjI5NDIiLCJ1bmlvbmlkIjoib3hScS13VGU2bGk1NFRYVk56YUhYbE5YR2Z3dyIsInJvbGUiOiIyNCIsIm9wZW5pZCI6Im84dURPNW01bjFzX19YZHNJcmRINXcxcmdJUkkiLCJpc3MiOiJzc2RqeiIsImV4cCI6MTYxNDY3NDU5NywiaWF0IjoxNjE0NjYzNzk3fQ.Okf9W6yDqihy123jnlAAKZ7QAjOLQu-wR-siQhakTuA";
     return config
   },
   error => {
