@@ -29,10 +29,10 @@ function getAlbumOptions({route}){
     headerTitle: route.params.item.title,
     headerTransparent:true,
     headerTitleStyle:{
-      opacity:0
+      opacity:route.params.opacity
     },
     headerBackground: () => (
-      <Animated.View style={styles.headerBackGround} />
+      <Animated.View style={[styles.headerBackGround,{opacity:route.params.opacity}]} />
     ),
   }
 }

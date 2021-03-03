@@ -1,7 +1,8 @@
 import React from "react";
-import { FlatList ,StyleSheet} from "react-native";
+import { StyleSheet ,Animated} from "react-native";
 import Item from "./Item";
 import { connect } from "react-redux";
+import { NativeViewGestureHandler } from "react-native-gesture-handler";
 
 const mapStateToProps = ({ album }) => {
   return {
@@ -20,24 +21,33 @@ class Album extends React.Component {
   };
 
   render() {
-    const { list } = this.props;
+    const { list ,panRef ,tabRef,nativeRef,onScrollDrag} = this.props;
     return (
-      <FlatList
-        style={styles.list}
-        keyExtractor={(item) => item.id + ""}
-        data={list}
-        renderItem={this.renderItem}
+      <NativeViewGestureHandler
+        simultaneousHandlers={panRef}
+        ref={nativeRef}
+        waitFor={tabRef}
       >
-      </FlatList>
+        <Animated.FlatList
+          style={styles.list}
+          bounces={false}
+          keyExtractor={(item) => item.id + ""}
+          data={list}
+          renderItem={this.renderItem}
+          onScrollBeginDrag={onScrollDrag}
+          onScrollEndDrag={onScrollDrag}
+        >
+        </Animated.FlatList>
+      </NativeViewGestureHandler>
     );
   }
 }
 
 export default connect(mapStateToProps)(Album);
 
-const styles=StyleSheet.create({
-  list:{
-    flex:1,
-    backgroundColor:'#fff',
-  }
-})
+const styles = StyleSheet.create({
+  list: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+});

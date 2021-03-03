@@ -37,7 +37,7 @@ export default {
   },
   effects: {
     * fetchAlbum({payload}, { call, put }) {
-      const {coursesDetail} = yield call(getCoursesInf,payload.id)
+      const {coursesDetail} = yield call(getCoursesInf,payload.id,payload.data)
       console.log(coursesDetail);
       yield put({
         type:'setState',
